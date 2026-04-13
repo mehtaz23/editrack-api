@@ -1,0 +1,6 @@
+@editrack_api_HostAddress = http://localhost:5250
+
+GET {{editrack_api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
