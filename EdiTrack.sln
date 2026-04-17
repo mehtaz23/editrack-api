@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "editrack-api", "editrack-api\editrack-api.csproj", "{778C2DB7-6B6B-42C6-8D6A-761AC3238CF1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdiTrack.Api", "src\EdiTrack.Api\EdiTrack.Api.csproj", "{778C2DB7-6B6B-42C6-8D6A-761AC3238CF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
