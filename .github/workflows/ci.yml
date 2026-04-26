@@ -26,7 +26,7 @@ jobs:
         run: dotnet build --no-restore --warnaserror
 
       - name: Test
-        run: dotnet test --no-build --logger "github;summary.includePassedTests=false"
+        run: dotnet test --no-build --logger "GitHubActions;summary.includePassedTests=false"
 
       - name: Format check
         run: dotnet format --verify-no-changes
