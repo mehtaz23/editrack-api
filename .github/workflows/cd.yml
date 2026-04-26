@@ -1,0 +1,15 @@
+name: CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: CD stub
+        run: echo "CD pipeline stub. Production deployment via ArgoCD/Kubernetes is deferred to a future phase."

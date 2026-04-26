@@ -1,6 +1,34 @@
 @editrack_api_HostAddress = http://localhost:5250
 
-GET {{editrack_api_HostAddress}}/weatherforecast/
-Accept: application/json
+### 1. Valid EDI submission — auto-generated correlationId
+POST {{editrack_api_HostAddress}}/api/ingest
+Content-Type: application/json
 
-###
+{
+  "senderId": "ACME",
+  "receiverId": "GLOBEX",
+  "transactionType": "850",
+  "payload": "ISA*00*          *00*          *ZZ*ACME           *ZZ*GLOBEX         *250101*0900*^*00501*000000001*0*P*>~"
+}
+
+### 2. Valid EDI submission — explicit correlationId
+POST {{editrack_api_HostAddress}}/api/ingest
+Content-Type: application/json
+
+{
+  "senderId": "ACME",
+  "receiverId": "GLOBEX",
+  "transactionType": "850",
+  "correlationId": "my-correlation-id-12345",
+  "payload": "ISA*00*          *00*          *ZZ*ACME           *ZZ*GLOBEX         *250101*0900*^*00501*000000001*0*P*>~"
+}
+
+### 3. Invalid submission — missing senderId (demonstrates 400 response)
+POST {{editrack_api_HostAddress}}/api/ingest
+Content-Type: application/json
+
+{
+  "receiverId": "GLOBEX",
+  "transactionType": "850",
+  "payload": "ISA*00*          *00*          *ZZ*ACME           *ZZ*GLOBEX         *250101*0900*^*00501*000000001*0*P*>~"
+}
