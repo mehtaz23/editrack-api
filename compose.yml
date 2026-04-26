@@ -1,0 +1,25 @@
+# compose.yml — local development dependencies only.
+# Run: docker compose up -d
+# The EdiTrack.Api application runs natively via `dotnet run`.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: editrack-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: editrack
+      POSTGRES_USER: editrack
+      POSTGRES_PASSWORD: editrack_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U editrack -d editrack"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
